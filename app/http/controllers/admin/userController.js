@@ -21,12 +21,12 @@ function userController() {
         // Store new user
         async store(req, res) {
             const { name, email, password, role } = req.body;
-
+            
             if (!name || !email || !password) {
                 req.flash('error', 'All fields are required');
                 return res.redirect('/admin/user/create');
             }
-
+            console.log("new user details-->", { name, email, password, role });
             try {
                 const user = new User({ name, email, password, role });
                 await user.save();
@@ -42,12 +42,14 @@ function userController() {
         // Render edit user form
         async edit(req, res) {
             try {
-                const user = await User.findById(req.params.id);
-                if (!user) {
+                const userEdit = await User.findById(req.params.id);
+                // console.log('req.params.id',req.params.id);
+                // console.log('userEdit',userEdit);
+                if (!userEdit) {
                     req.flash('error', 'User not found');
                     return res.redirect('/admin/user');
                 }
-                return res.render('admin/user/edit', { user });
+                return res.render('admin/user/edit', { userEdit });
             } catch (err) {
                 console.error(err);
                 res.status(500).send('Error fetching user');

@@ -11,14 +11,14 @@
           </tr>
       </thead>
       <tbody>
-          <% users.forEach(users => { %>
+          <% users.forEach(u => { %>
           <tr class="text-center">
-              <td class="border px-4 py-2"><%= user.name %></td>
-              <td class="border px-4 py-2"><%= user.email %></td>
-              <td class="border px-4 py-2"><%= user.role %></td>
+              <td class="border px-4 py-2"><%= u.name %></td>
+              <td class="border px-4 py-2"><%= u.email %></td>
+              <td class="border px-4 py-2"><%= u.role %></td>
               <td class="border px-4 py-2 flex justify-center gap-2">
-                  <a href="/admin/user/<%= user._id %>/edit" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</a>
-                  <form action="/admin/user/<%= user._id %>/delete" method="POST">
+                  <a href="/admin/user/<%= u._id %>/edit" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</a>
+                  <form action="/admin/user/<%= u._id %>/delete" method="POST">
                       <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
                   </form>
               </td>
