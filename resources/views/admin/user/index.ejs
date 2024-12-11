@@ -1,0 +1,29 @@
+<div class="container mx-auto p-6">
+  <h1 class="text-2xl font-bold mb-4">All Users</h1>
+  <a href="/admin/user/create" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Create New User</a>
+  <table class="w-full mt-4 border-collapse border border-gray-300">
+      <thead>
+          <tr class="bg-gray-100">
+              <th class="border px-4 py-2">Name</th>
+              <th class="border px-4 py-2">Email</th>
+              <th class="border px-4 py-2">Role</th>
+              <th class="border px-4 py-2">Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% users.forEach(users => { %>
+          <tr class="text-center">
+              <td class="border px-4 py-2"><%= user.name %></td>
+              <td class="border px-4 py-2"><%= user.email %></td>
+              <td class="border px-4 py-2"><%= user.role %></td>
+              <td class="border px-4 py-2 flex justify-center gap-2">
+                  <a href="/admin/user/<%= user._id %>/edit" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</a>
+                  <form action="/admin/user/<%= user._id %>/delete" method="POST">
+                      <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
+                  </form>
+              </td>
+          </tr>
+          <% }); %>
+      </tbody>
+  </table>
+</div>

@@ -1,0 +1,33 @@
+<div class="container mx-auto p-6">
+  <h1 class="text-2xl font-bold mb-4">Menu Items</h1>
+  <a href="/admin/menu/create" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add New Menu Item</a>
+  <table class="w-full mt-4 border-collapse border border-gray-300">
+      <thead>
+          <tr class="bg-gray-100">
+              <th class="border px-4 py-2">Name</th>
+              <th class="border px-4 py-2">Image</th>
+              <th class="border px-4 py-2">Price</th>
+              <th class="border px-4 py-2">Size</th>
+              <th class="border px-4 py-2">Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% menuItems.forEach(menuItem => { %>
+          <tr class="text-center">
+              <td class="border px-4 py-2"><%= menuItem.name %></td>
+              <td class="border px-4 py-2">
+                  <img src="<%= menuItem.image %>" alt="<%= menuItem.name %>" class="w-16 h-16 object-cover mx-auto">
+              </td>
+              <td class="border px-4 py-2"><%= menuItem.price %></td>
+              <td class="border px-4 py-2"><%= menuItem.size %></td>
+              <td class="border px-4 py-2 flex justify-center gap-2">
+                  <a href="/admin/menu/<%= menuItem._id %>/edit" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</a>
+                  <form action="/admin/menu/delete/<%= menuItem._id %>" method="POST">
+                      <button type="submit" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
+                  </form>
+              </td>
+          </tr>
+          <% }); %>
+      </tbody>
+  </table>
+</div>
